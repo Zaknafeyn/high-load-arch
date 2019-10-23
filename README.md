@@ -29,6 +29,6 @@ or in single command:
 git clone https://github.com/Zaknafeyn/high-load-arch.git && cd high-load-arch && docker-compose build && docker-compose up
 ```
 
-Server is available at address [http:\\localhost:8181](http:\localhost:8181)
+Server is available at address [http://localhost:8181](http://localhost:8181)
 
 To modify parameters of run, change parameters of docker-compose.yml
