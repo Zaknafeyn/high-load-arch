@@ -1,0 +1,6 @@
+# ignore unused files and folders in docker context
+# allow only dist folder and files in root
+
+.git
+.cache
+.vscode

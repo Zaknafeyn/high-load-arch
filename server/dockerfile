@@ -1,0 +1,13 @@
+# Deployable artifact
+FROM nginx:alpine
+
+RUN apk add nano
+
+COPY nginx/nginx.tmpl.conf /nginx.tmpl.conf
+COPY nginx/default.tmpl.conf /default.tmpl.conf
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+RUN chmod +x /docker-entrypoint.sh
+
+EXPOSE 80
+CMD /docker-entrypoint.sh
