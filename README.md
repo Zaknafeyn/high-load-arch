@@ -32,6 +32,23 @@ git clone https://github.com/Zaknafeyn/high-load-arch.git && cd high-load-arch &
 
 Server is available at address [http://localhost:8181](http://localhost:8181)
 
+**Run separate container outside of docker-compose:**  
+Attacker:
+
+```
+cd attacker
+docker build -t prjctr:attacker .
+docker run -it --rm --name attacker -e HOST=10.0.75.1 -e PORT=80 -e SOCKETS=1000 -e SLEEP_TIME=10 prjctr:attacker
+```
+
+Server:
+
+```
+cd server
+docker build -t prjctr:server .
+docker run --rm --name nginx-server -p 8181:80 -e HOST=server -e PORT=80 -e WORKER_CONNECTIONS=600 -e CONNECTION_TIMEOUT=5 -e ZONE_REQ_PER_SECOND=10 -e ZONE_REQ_PER_SECOND_BURST=20 prjctr:server
+```
+
 ## How to configure
 
 To modify run parameters, change parameters of docker-compose.yml and rebuild containers

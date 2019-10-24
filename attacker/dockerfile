@@ -5,4 +5,6 @@ RUN apk add nano && apk add git && apk add python3
 
 RUN git clone https://github.com/gkbrk/slowloris
 
-CMD python3 slowloris/slowloris.py ${HOST} -p=${PORT} -s=${SOCKETS} --sleeptime=${SLEEP_TIME}
+WORKDIR /slowloris
+
+CMD python3 ./slowloris.py ${HOST} -p=${PORT} -s=${SOCKETS} --sleeptime=${SLEEP_TIME}
