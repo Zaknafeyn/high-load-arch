@@ -5,14 +5,16 @@ services:
     environment:
       - HOST=server
       - PORT=80
-      - WORKER_CONNECTIONS=10 #number of worker connections that server supports simultaneously
+      - WORKER_CONNECTIONS=600 #number of worker connections that server supports simultaneously
       - CONNECTION_TIMEOUT=5 # timeout in seconds that server keeps per each connection
+      - ZONE_REQ_PER_SECOND=10 # limit requests per second for single IP address
+      - ZONE_REQ_PER_SECOND_BURST=20 # number of requests delayed after rate limit exceeded, other requests will be dropped
     ports:
       - "8181:80"
   attacker:
     build: .\attacker
     environment:
-      - SOCKETS=100
+      - SOCKETS=1000
       - HOST=server
       - PORT=80
-      - SLEEP_TIME=30 # sleep time in seconds between another attempt to send keep-alive header
+      - SLEEP_TIME=10 # sleep time in seconds between another attempt to send keep-alive header

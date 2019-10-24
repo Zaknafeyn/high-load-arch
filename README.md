@@ -14,6 +14,7 @@ Links, used to setup NGinx:
 - https://blog.qualys.com/securitylabs/2011/11/02/how-to-protect-against-slow-http-attacks
 - https://www.nginx.com/blog/mitigating-ddos-attacks-with-nginx-and-nginx-plus/
 - https://hexadix.com/slowloris-dos-attack-mitigation-nginx-web-server/
+- https://www.nginx.com/blog/rate-limiting-nginx/
 
 ### How to run
 
@@ -31,4 +32,15 @@ git clone https://github.com/Zaknafeyn/high-load-arch.git && cd high-load-arch &
 
 Server is available at address [http://localhost:8181](http://localhost:8181)
 
-To modify parameters of run, change parameters of docker-compose.yml
+## How to configure
+
+To modify run parameters, change parameters of docker-compose.yml and rebuild containers
+If you want to run container without docker-compose, just add env variables to DOCKER RUN command e.g. docker run -e VAR1=val1 -e VAR2=val2
+
+### Further improvements
+
+To increase protection against Slowloris following technics could be additionally applied:
+
+- limit number of requests allowed from single address per time frame
+- after some experiments define the best connection timings that allows to return any content from the site and apply them
+- drop requests with HTTP verbs that not supported by the web site
