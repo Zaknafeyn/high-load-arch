@@ -5,7 +5,7 @@ namespace DbManipulator
     public static class ConfigureServicesExtension
     {
         private const string ConnectionStringPattern =
-            "Server={0}; Port={1};User Id={2};Password={3};Database={4}";
+            "Server={0}; Port={1};User Id={2};Password={3};Database={4};ConvertZeroDateTime=true";
 
         private static string _connectionString = "";
 

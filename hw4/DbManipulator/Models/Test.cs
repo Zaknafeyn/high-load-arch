@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace DbManipulator.Models
 {
-    public partial class Test
+    public class Test
     {
         public int Id { get; set; }
         public string Text { get; set; }
