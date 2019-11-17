@@ -3,9 +3,9 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0.100-alpine3.10 AS build
 WORKDIR /src
-COPY ["DbManipulator/DbManipulator.csproj", "DbManipulator/"]
+COPY ["*", "DbManipulator/"]
 RUN dotnet restore "DbManipulator/DbManipulator.csproj"
 COPY . .
 WORKDIR "/src/DbManipulator"

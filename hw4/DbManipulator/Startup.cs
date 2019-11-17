@@ -21,6 +21,7 @@ namespace DbManipulator
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -30,7 +31,7 @@ namespace DbManipulator
         {
             services.AddControllers();
             services.AddDbContext<MariadbtestContext>(options =>
-        options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+        options.UseMySql(Configuration.GetConnectionStringFromEnvironment()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

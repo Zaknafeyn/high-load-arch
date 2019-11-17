@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    ports:
+      - 3306:3306
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - 8080:8080
+  worker:
+    image: high-load-arch:db-reader
+    container_name: db-reader
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - 8090:80      
+    environment:
+      - DB_SERVER=mariadb
