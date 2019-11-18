@@ -9,3 +9,8 @@ docker build -t high-load-arch:db-reader --no-cache --rm .
 - **DB_USER** - db user to connect to DB
 - **DB_PASS** - password for specified user
 - **DB_NAME** - name of database
+
+#### Run siege:  
+```
+siege -c=100 --internet --file siege-urls.txt --content-type="application/json" -b --internet
+```
