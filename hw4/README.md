@@ -12,5 +12,5 @@ docker build -t high-load-arch:db-reader --no-cache --rm .
 
 #### Run siege:  
 ```
-siege -c=100 --internet --file siege-urls.txt --content-type="application/json" -b --internet
+siege -c=100 --internet --file siege-urls.txt --content-type="application/json" -b 
 ```

@@ -18,13 +18,40 @@ services:
       - mariadb
     ports:
       - 8080:8080
-  db-reader:
-    image: high-load-arch:db-reader
-    container_name: db-reader
+  db-reader-1:
+    build: ./DbManipulator
+    container_name: db-reader-1
     restart: always
     depends_on:
       - mariadb
-    ports:
-      - 8090:80      
     environment:
       - DB_SERVER=mariadb
+  db-reader-2:
+    build: ./DbManipulator
+    container_name: db-reader-2
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      - DB_SERVER=mariadb
+  db-reader-3:
+    build: ./DbManipulator
+    container_name: db-reader-3
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      - DB_SERVER=mariadb
+  loadbalancer:
+    build: ./load-balancer
+    container_name: load-balancer
+    volumes:
+      - ~/Dev/data/nginx/logs:/tmp/logs
+    ports:
+      - 8081:8080
+    restart: always
+    depends_on:
+      - db-reader-1
+      - db-reader-2
+      - db-reader-3
+#    tty: true

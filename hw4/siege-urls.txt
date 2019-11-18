@@ -14,8 +14,8 @@
 # for more information, man urls_txt
 # -------------------------------------------------------
 
-http://localhost:8090/
-http://localhost:8090/peopleregistry/1
-http://localhost:8090/peopleregistry POST {"Name": "Firts Name", "Text":"Text For First Name"}
-http://localhost:8090/peopleregistry POST {"Name": "Second Name", "Text":"Text For Second Name"}
-http://localhost:8090/peopleregistry POST {"Name": "Third Name", "Text":"Text For Third Name"}
+http://localhost:8081/
+http://localhost:8081/peopleregistry/1
+http://localhost:8081/peopleregistry POST {"Name": "Firts Name", "Text":"Text For First Name"}
+http://localhost:8081/peopleregistry POST {"Name": "Second Name", "Text":"Text For Second Name"}
+http://localhost:8081/peopleregistry POST {"Name": "Third Name", "Text":"Text For Third Name"}
