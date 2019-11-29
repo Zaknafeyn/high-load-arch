@@ -50,6 +50,8 @@ services:
     ports:
       - 8081:8080
     restart: always
+    sysctls:
+      - net.core.somaxconn=65535
     depends_on:
       - db-reader-1
       - db-reader-2

@@ -17,5 +17,5 @@ docker-compose up --build -d
 
 #### Run siege:  
 ```
-siege -c=100 --internet --file siege-urls.txt --content-type="application/json" -b 
+siege -c 255 --internet --file siege-urls.txt --content-type="application/json" -b 
 ```
