@@ -2,7 +2,7 @@
 
 namespace PopulateDb
 {
-    public class DataRecord
+    public class DataRecord1
     {
         public uint Id { get; set; }
         public string FirstName { get; set; }

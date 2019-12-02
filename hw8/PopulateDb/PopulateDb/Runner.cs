@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PopulateDb.Models;
 
+
 namespace PopulateDb
 {
     public class Runner
@@ -34,27 +35,27 @@ namespace PopulateDb
             }
         }
 
-        private async Task InsertMyisamDataAsync(List<DataRecord> records)
+        private async Task InsertMyisamDataAsync(List<DataRecord1> records)
         {
             var rows = records.Select(GetMyisamRecord);
             await _dbContext.Myisam.AddRangeAsync(rows);
             await _dbContext.SaveChangesAsync();
         }
 
-        private async Task InsertInnodbDataAsync(List<DataRecord> records)
+        private async Task InsertInnodbDataAsync(List<DataRecord1> records)
         {
             var rows = records.Select(GetInnodbRecord);
             await _dbContext.Innodb.AddRangeAsync(rows);
             await _dbContext.SaveChangesAsync();
         }
 
-        private DataRecord GetDataRecord()
+        private DataRecord1 GetDataRecord()
         {
             var day = GetDay();
             var month = GetMonth();
             var year = GetYear();
             var date = GetBirthDate(day, month, year);
-            var result = new DataRecord
+            var result = new DataRecord1
             {
                 FirstName = GenName(),
                 SecondName = GenName(),
@@ -68,7 +69,7 @@ namespace PopulateDb
             return result;
         }
 
-        private Myisam GetMyisamRecord(DataRecord record)
+        private Myisam GetMyisamRecord(DataRecord1 record)
         {
             var result = new Myisam
             {
@@ -84,7 +85,7 @@ namespace PopulateDb
             return result;
         }
 
-        private Innodb GetInnodbRecord(DataRecord record)
+        private Innodb GetInnodbRecord(DataRecord1 record)
         {
             var result = new Innodb
             {
