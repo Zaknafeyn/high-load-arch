@@ -30,7 +30,7 @@ namespace PopulateDb
                 await InsertMyisamDataAsync(records);
                 if (i % 100 == 0)
                 {
-                    Console.WriteLine($"Processed {i * 100 * itemPortion} records ...");
+                    Console.WriteLine($"Processed {i * itemPortion} records ...");
                 }
             }
         }

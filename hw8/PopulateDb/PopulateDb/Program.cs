@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection.PortableExecutable;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using PopulateDb.Models;
 
 namespace PopulateDb
@@ -9,13 +10,14 @@ namespace PopulateDb
     {
         static void Main(string[] args)
         {
-            //var connectionString = "Server=192.168.2.102; Port=3306;User Id=<login>;Password=<pass>;Database=hw8";
-            MainAsync().GetAwaiter();
+            MainAsync().GetAwaiter().GetResult();
         }
 
         static async Task MainAsync()
         {
             var runner = new Runner(new hw8Context());
+            await runner.RunAsync();
+            Console.WriteLine("Done");
         }
     }
 }

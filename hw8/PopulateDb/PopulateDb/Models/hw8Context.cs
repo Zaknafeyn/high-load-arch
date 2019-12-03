@@ -19,6 +19,7 @@ namespace PopulateDb.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseMySql("Server=192.168.2.102; Port=3306;User Id=root;Password=admin;Database=hw8");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
