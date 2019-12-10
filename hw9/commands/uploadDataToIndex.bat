@@ -1,0 +1,2 @@
+rem curl -H "Content-Type: application/json" -XPUT http://vradchuk.info:9200/_bulk?pretty --data-binary @movies.json
+curl -H "Content-Type: application/json" -XPUT http://vradchuk.info:9200/_bulk?pretty --data-binary @test.txt
