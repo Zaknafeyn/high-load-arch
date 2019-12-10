@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb-l8.1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - mariadb-storage:/var/lib/mysql
+    ports:
+      - 3306:3306
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - 18080:8080
+volumes:
+  mariadb-storage:
