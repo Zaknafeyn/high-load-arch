@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -XGET http://vradchuk.info:9200/movies/_mapping/movie?pretty
