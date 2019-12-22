@@ -1,0 +1,1 @@
+curl https://oss.sonatype.org/content/repositories/snapshots/fr/pilato/elasticsearch/crawler/fscrawler-es7/2.7-SNAPSHOT/fscrawler-es7-2.7-20191209.083331-61.jar --output bin\fscrawler-es7-2.7.jar

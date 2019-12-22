@@ -27,7 +27,7 @@ namespace PopulateDb
             {
                 var records = fakeArray.Select(_ => GetDataRecord()).ToList();
                 await InsertInnodbDataAsync(records);
-                await InsertMyisamDataAsync(records);
+                // await InsertMyisamDataAsync(records);
                 if (i % 100 == 0)
                 {
                     Console.WriteLine($"Processed {i * itemPortion} records ...");
