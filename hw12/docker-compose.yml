@@ -1,10 +1,48 @@
 version: "3"
 services:
-  nginx:
-    build: .
-    container_name: nginx
-    restart: always
-    # volumes:
-    #   - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  # balancer:
+  #   build: .
+  #   container_name: balancer
+  #   #restart: always
+  #   volumes:
+  #     #- ${PWD}/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  #     - ~/Dev/high-load-arch/hw12/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  #   ports:
+  #     - 8180:80
+
+  uk:
+    build: uk
+    container_name: uk
+    #restart: always
+    #volumes:
+      #- ~/Dev/high-load-arch/hw12/us/nginx.us.conf:/etc/nginx/conf.d/default.conf:ro
+      #- ${PWD}/us/nginx.us.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - 8181:80
+  us:
+    build: us
+    container_name: us
+    #restart: always
+    #volumes:
+      #- ${PWD}/us/nginx.us.conf:/etc/nginx/conf.d/default.conf:ro
+      #- ~/Dev/high-load-arch/hw12/us/nginx.us.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - 8182:80
+  default:
+    build: default
+    container_name: default
+    ports:
+      - 8183:80      
+  nginx-geo:
+    image: karelbemelmans/nginx-geoip
+    container_name: nginx-geo
+    #restart: always
+    ports:
+      - 8180:80
+    volumes:
+      #- ~/Dev/high-load-arch/hw12/proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      #- ${PWD}/proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      - ${PWD}/nginx.mock.conf:/etc/nginx/conf.d/default.conf:ro
+      - ${PWD}/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ${PWD}/nginx.mock.conf:/etc/nginx/conf.d/00-upstream.conf:ro
+    #  - nginx.conf:/etc/nginx/conf.d/00-upstream.conf:ro

@@ -1,0 +1,50 @@
+
+CREATE OR REPLACE INDEX BirthDateHash USING HASH
+    ON hw8.myisam (BirthDate);
+	
+CREATE OR REPLACE INDEX BirthDateBTree USING BTREE
+    ON hw8.myisam  (BirthDate);
+	
+CREATE OR REPLACE INDEX BirthDayHash USING  HASH
+    ON hw8.myisam  (BirthDay);
+	
+CREATE OR REPLACE INDEX BirthDayBTree USING  BTREE
+    ON hw8.myisam  (BirthDay);
+	
+CREATE OR REPLACE INDEX BirthMonthHash USING  HASH
+    ON hw8.myisam  (BirthMonth);
+	
+CREATE OR REPLACE INDEX BirthMonthBTree USING  BTREE
+    ON hw8.myisam  (BirthMonth);
+	
+CREATE OR REPLACE INDEX BirthYearHash USING  HASH
+    ON hw8.myisam  (BirthYear);
+	
+CREATE OR REPLACE INDEX BirthYearBTree USING  BTREE
+    ON hw8.myisam  (BirthYear);
+	
+	
+---------------
+CREATE OR REPLACE INDEX BirthDateHash USING HASH
+    ON hw8.innodb (BirthDate);
+	
+CREATE OR REPLACE INDEX BirthDateBTree USING BTREE
+    ON hw8.innodb  (BirthDate);
+	
+CREATE OR REPLACE INDEX BirthDayHash USING  HASH
+    ON hw8.innodb  (BirthDay);
+	
+CREATE OR REPLACE INDEX BirthDayBTree USING  BTREE
+    ON hw8.innodb  (BirthDay);
+	
+CREATE OR REPLACE INDEX BirthMonthHash USING  HASH
+    ON hw8.innodb  (BirthMonth);
+	
+CREATE OR REPLACE INDEX BirthMonthBTree USING  BTREE
+    ON hw8.innodb  (BirthMonth);
+	
+CREATE OR REPLACE INDEX BirthYearHash USING  HASH
+    ON hw8.innodb  (BirthYear);
+	
+CREATE OR REPLACE INDEX BirthYearBTree USING  BTREE
+    ON hw8.innodb  (BirthYear);	
