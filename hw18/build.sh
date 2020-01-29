@@ -4,7 +4,7 @@ docker-compose down
 rm -rf ./master/data/*
 rm -rf ./slave/data/*
 docker-compose build
-docker-compose up -d
+docker-compose up -d adminer mysql_slave mysql_master
 
 until docker exec mysql_master sh -c 'export MYSQL_PWD=111; mysql -u root -e ";"'
 do
