@@ -10,7 +10,7 @@ namespace PopulateDb
     {
         static void Main(string[] args)
         {
-            MainAsync().GetAwaiter().GetResult();
+            MainAsync(args).GetAwaiter().GetResult();
         }
 
         static async Task MainAsync(string[] args)

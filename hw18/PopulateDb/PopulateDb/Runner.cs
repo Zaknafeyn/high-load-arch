@@ -18,16 +18,19 @@ namespace PopulateDb
             _dbContext = dbContext;
         }
 
-        public async Task RunAsync(int itemsNumber = 2_000_000, int itemPortion = 100)
+        public async Task RunAsync(int itemsNumber = 1_000_000, int itemPortion = 100)
         {
             Console.WriteLine($"Generating {itemsNumber} fake records for DB");
             var iterations = itemsNumber / itemPortion;
             var fakeArray = new int [itemPortion];
+            
             for (var i = 0; i < iterations; i++)
             {
                 var records = fakeArray.Select(_ => GetDataRecord()).ToList();
                 await InsertTempDataAsync(records);
-                if (i % 100 == 0)
+                await Task.Delay(1500);
+                Console.WriteLine($"{itemPortion} items inserted");
+                if (i % itemPortion == 0)
                 {
                     Console.WriteLine($"Processed {i * itemPortion} records ...");
                 }

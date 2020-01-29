@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PopulateDb": {
+      "commandName": "Project",
+      "commandLineArgs": "\"Server=ubuntu-vm.home; Port=4406;User Id=root;Password=111;Database=mydb\""
+    }
+  }
+}

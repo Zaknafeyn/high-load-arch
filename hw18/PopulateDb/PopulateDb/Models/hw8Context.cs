@@ -16,7 +16,7 @@ namespace PopulateDb.Models
         {
         }
 
-        public virtual DbSet<Test> Test { get; set; }
+        public virtual DbSet<Temp> Temp { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,13 +25,13 @@ namespace PopulateDb.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Test>(entity =>
+            modelBuilder.Entity<Temp>(entity =>
             {
-                entity.ToTable("temp");
+                entity.ToTable("Temp");
 
                 entity.Property(e => e.Id).HasColumnType("int(10) unsigned");
 
-                entity.Property(e => e.FirstName)
+                entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnType("varchar(30)")
                     .HasCharSet("latin1")
