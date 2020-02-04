@@ -1,0 +1,55 @@
+version: "3"
+services:
+  main:
+    image: postgres
+    env_file:
+      - ./main-server/main.env
+    container_name: "main"
+    restart: "no"
+    depends_on:
+      - shard-1
+      - shard-2
+    ports:
+      - 5000:${POSTGRE_PORT}
+    volumes:
+       - ./main-server/init-main.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - overlay
+
+  shard-1:
+    image: postgres
+    env_file:
+        - ./shard-1/shard-1.env
+    container_name: "shard-1"
+    restart: "no"
+    ports:
+        - 5001:${POSTGRE_PORT}
+    volumes:
+      - ./shard-1/init-shard-1.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+        - overlay
+
+  shard-2:
+    image: postgres
+    env_file:
+        - ./shard-2/shard-2.env
+    container_name: "shard-2"
+    restart: "no"
+    ports:
+        - 5002:${POSTGRE_PORT}
+    volumes:
+      - ./shard-2/init-shard-2.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+        - overlay
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - overlay
+
+networks:
+  overlay:

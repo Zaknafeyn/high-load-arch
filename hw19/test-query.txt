@@ -1,0 +1,6 @@
+INSERT INTO Test 
+(FirstName, SecondName, Phone, BirthDate, BirthDay, BirthMonth, BirthYear) 
+VALUES
+('First', 'Second', '+38098...', '1949-11-23', 23, 11, 49),
+('First', 'Second', '+38098...', '1950-11-23', 23, 11, 50),
+('First', 'Second', '+38098...', '1951-11-23', 23, 11, 51)
